@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2 class="h2 pb-4 text-center">Attendance Sheet</h2>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Conducted Class Time</th> <!-- Conducted Class Time Header -->
+                <th>Time Spent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendances %}
+            <tr>
+                <td>{{ attendance.course }}</td>
+                <td>{{ attendance.date }}</td>
+                <td>{{ attendance.conducted_class_time }} Hours</td> <!-- Conducted Class Time Data -->
+                <td>{{ attendance.time }} Hours</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

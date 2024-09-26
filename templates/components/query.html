@@ -1,0 +1,31 @@
+<div class="container py-4" id="query">
+    <h2 class="h2 pb-4 text-center">Ask Query</h2>
+    <form class="text-center">
+        <!-- Row for Course and Topic selection -->
+        <div class="row mb-3 justify-content-center">
+            <!-- Select Course -->
+            <div class="col-md-6"> <!-- Reduced the column size -->
+                <select id="courseSelect" class="form-control">
+                    <option selected>Select your course</option>
+                    <option value="course1">AWS Cloud</option>
+                    <option value="course2">Machine Learning</option>
+                    <option value="course3">TensorFlow</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Row for Text Area -->
+        <div class="row mb-3 pt-2 justify-content-center">
+            <div class="col-md-6"> <!-- Reduced the column size -->
+                <textarea id="queryTextArea" class="form-control" rows="6" placeholder="Type your query here..."></textarea>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit Query</button>
+            </div>
+        </div>
+    </form>
+</div>
