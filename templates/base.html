@@ -15,7 +15,9 @@
     {% include "components/navbar.html" %}
 
 
+    {% block hero %}
 
+    {% endblock hero %}
 
     <div class="container">
         {% block section1 %}
@@ -40,9 +42,7 @@
     </div>
 
 
-    <div class="pt-5">
-        {% include "components/footer.html" %}
-    </div>
+    {% include "components/footer.html" %}
 
 
 

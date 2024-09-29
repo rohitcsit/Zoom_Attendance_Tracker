@@ -1,7 +1,10 @@
 from django.urls import path
-from app import views
+from . import views
 
 urlpatterns = [
-    path('', views.index, name='app'),
-    
+    path('', views.index, name='index'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('UpcomingSession/', views.UpcomingSession, name='upcoming_sessions'), 
+    # path('submit_query/', views.submit_query, name='submit_query'),
 ]

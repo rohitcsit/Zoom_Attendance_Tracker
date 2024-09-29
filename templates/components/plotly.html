@@ -1,29 +1,96 @@
 <div class="container py-4">
-    <h2 class="h2 pb-4 text-center">Attendance Percentage</h2>
+    <h2 class="h2 pb-4 text-center">Attendance Analysis</h2>
+
     <div class="row pb-4">
         <div class="col-md text-center">
-
             <select class="form-select" id="attendanceType">
                 <option value="Total">Total Percentage</option>
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
                 <option value="monthly">Monthly</option>
             </select>
-            <img src="https://www.attendanceworks.org/wp-content/uploads/2015/01/Snip20150128_2.png" alt="Attendance Type" class="img-fluid pt-3">
-            <img src="path_to_attendance_type_image.jpg" alt="Attendance Type" class="img-fluid pt-3">
-
         </div>
         <div class="col-md text-center">
-
             <select class="form-select" id="courseSelect">
                 <option selected>Course wise percentage</option>
-                <option value="course1">AWS Cloud</option>
-                <option value="course2">Machine Learning</option>
-                <option value="course3">Tensorflow</option>
+                {% for course in courses %}
+                <option value="{{ course }}">{{ course }}</option>
+                {% endfor %}
             </select>
-            <img src="https://i.pinimg.com/736x/7f/cf/ad/7fcfadad4c76e5c38ba4f45b419881b8.jpg" alt="Course Selection" class="img-fluid pt-3">
-            <img src="path_to_course_image.jpg" alt="Course Selection" class="img-fluid pt-3">
-
         </div>
     </div>
+
+    <div class="row">
+        <!-- Column for Bar Graph -->
+        <div class="col-md">
+            <div id="conductedVsAttendedBarGraph" style="width: 100%; height: 400px;"></div>
+        </div>
+
+        <!-- Column for Pie Chart -->
+        <div class="col-md">
+            <div id="conductedVsAttendedPieChart" style="width: 100%; height: 400px;"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // Use Django context data to create JavaScript arrays
+        const courses = {{ courses| safe }};  // Pass the course names
+        const conductedClasses = {{ conducted_classes| safe }}; // Conducted Class Time in Hours
+        const attendedClasses = {{ attended_classes| safe }}; // Attended Class Time in Hours
+
+        // Create the bar plot for Conducted vs Attended Classes
+        const barData = [{
+            x: courses,
+            y: conductedClasses,
+            name: 'Conducted Class Time',
+            type: 'bar',
+            marker: {
+                color: 'blue'
+            }
+        }, {
+            x: courses,
+            y: attendedClasses,
+            name: 'Attended Class Time',
+            type: 'bar',
+            marker: {
+                color: 'green'
+            }
+        }];
+
+        const barLayout = {
+            title: 'Conducted vs Attended Class Time',
+            xaxis: {
+                title: 'Courses'
+            },
+            yaxis: {
+                title: 'Time (Hours)',
+                rangemode: 'tozero'  // Starts y-axis from 0
+            },
+            barmode: 'group'  // Grouped bar mode
+        };
+
+        Plotly.newPlot('conductedVsAttendedBarGraph', barData, barLayout);
+
+        // Calculate total conducted and attended classes
+        const totalConducted = conductedClasses.reduce((a, b) => a + b, 0);
+        const totalAttended = attendedClasses.reduce((a, b) => a + b, 0);
+
+        // Create the pie chart for Conducted vs Attended Classes
+        const pieData = [{
+            labels: ['Conducted Classes', 'Attended Classes'],
+            values: [totalConducted, totalAttended],
+            type: 'pie',
+            textinfo: 'label+percent',
+            marker: {
+                colors: ['lightblue', 'lightgreen']
+            }
+        }];
+
+        const pieLayout = {
+            title: 'Conducted vs Attended Class Time (Pie Chart)',
+        };
+
+        Plotly.newPlot('conductedVsAttendedPieChart', pieData, pieLayout);
+    </script>
 </div>

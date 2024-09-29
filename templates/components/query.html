@@ -7,9 +7,9 @@
             <div class="col-md-6"> <!-- Reduced the column size -->
                 <select id="courseSelect" class="form-control">
                     <option selected>Select your course</option>
-                    <option value="course1">AWS Cloud</option>
-                    <option value="course2">Machine Learning</option>
-                    <option value="course3">TensorFlow</option>
+                    {% for course in unique_courses %}
+                    <option value="{{ course }}">{{ course }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>

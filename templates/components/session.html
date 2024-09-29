@@ -1,87 +1,22 @@
 <div class="container py-4" id="session">
-    <h2 class="h2 pb-4 text-center">Upcoming Session</h2>
+    <h2 class="h2 pb-4 text-center">Upcoming Sessions</h2>
 
     <div class="row">
+        {% for session in sessions %}
         <div class="col-md-3">
             <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-success">Header</h5>
+                <h5 class="card-header alert alert-success">Course - <span>{{ session.duration }} Hours</span></h5>
                 <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">{{ session.course }}</h5>
+                    <p class="card-text">{{ session.description }}</p>
+                    <p class="card-text"><strong>Date:</strong> {{ session.session_date }}</p>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-success">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
+        {% empty %}
+        <div class="col-md-12">
+            <div class="alert alert-info text-center">No upcoming sessions available.</div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-success">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-success">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row pt-4">
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-success">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-secondary">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-secondary">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                <h5 class="card-header alert alert-secondary">Header</h5>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>

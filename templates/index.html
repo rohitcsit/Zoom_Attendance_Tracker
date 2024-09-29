@@ -1,34 +1,23 @@
 {% extends "base.html" %}
 
+
+{% block hero %}
+{% include "components/crousel.html" %}
+{% endblock hero %}
+
 {% block section1 %}
 {% include "components/table.html" %}
+
+
 {% include "components/plotly.html" %}
+
 {% endblock section1 %}
-
-
-
-
 
 {% block section2 %}
 {% include "components/session.html" %}
 {% endblock section2 %}
 
 
-
-
 {% block section3 %}
 {% include "components/query.html" %}
 {% endblock section3 %}
-
-
-
-{% block section4 %}
-
-{% endblock section4 %}
-
-
-
-
-{% block section5 %}
-
-{% endblock section5 %}
