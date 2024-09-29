@@ -2,6 +2,8 @@
 
 **Draw.io**: [Workflow Diagram](https://drive.google.com/file/d/1_N7xQqpITmObizHcJ7MeuGtOqFcDpEAd/view)
 
+![Workflow Diagram](./zoom-attendance-workflow.png)
+
 ## Project Overview
 The **Zoom Attendance Tracker** is an automated system designed to simplify and enhance attendance tracking and student engagement monitoring for online Zoom sessions. By extracting attendance logs directly from Zoom, the system generates detailed attendance reports and participation metrics, allowing educators to identify students who may need additional support.
 
